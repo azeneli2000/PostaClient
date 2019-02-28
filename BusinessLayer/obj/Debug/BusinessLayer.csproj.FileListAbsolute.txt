@@ -1,0 +1,4 @@
+c:\users\andi\documents\visual studio 2015\Projects\AdexWebClient\BusinessLayer\bin\Debug\BusinessLayer.dll
+c:\users\andi\documents\visual studio 2015\Projects\AdexWebClient\BusinessLayer\bin\Debug\BusinessLayer.pdb
+c:\users\andi\documents\visual studio 2015\Projects\AdexWebClient\BusinessLayer\obj\Debug\BusinessLayer.dll
+c:\users\andi\documents\visual studio 2015\Projects\AdexWebClient\BusinessLayer\obj\Debug\BusinessLayer.pdb

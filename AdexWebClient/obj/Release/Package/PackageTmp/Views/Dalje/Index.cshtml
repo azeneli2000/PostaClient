@@ -1,0 +1,195 @@
+﻿@model BusinessLayer.Order
+
+
+<h4>Dalje nga magazina</h4>
+<hr />
+<div class="form-group">
+    <div class="col-md-10">@Html.DropDownList("IdShoferi")</div>
+    <label class="control-label col-md-2" for="Telefon">Barcode</label>
+    <div class="col-md-10">
+        <input class="container"  data-val="true" data-val-required="Vendosni barcodin !" id="Barcode" name="Barcode" placeholder="Barcodi" type="text" />
+        <div id="spinner" style="display:inline-block">
+           @*<img src="~/ajax-loader.gif" />*@
+        </div>
+        <span class="field-validation-valid text-danger" data-valmsg-for="Barcode" data-valmsg-replace="true"></span>
+        <input class="form-control text-box single-line" data-val="true" data-val-required="Vendosni barcodin !" id="Shoferi" name="Shoferi" placeholder="Barcodi" type="hidden" />
+        <input class="form-control text-box single-line" data-val="true" data-val-required="Vendosni barcodin !" id="Vlera" name="Vlera" placeholder="Barcodi" type="hidden" />
+       
+    </div>
+    
+</div>
+
+<div id="idshoferi" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+
+
+<div id="derguesi" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+<div id="emrimarresi" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+
+<div id="adresa" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+<div id="zona" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+<div id="sherbimi" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+<div id="orapickup" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+<div id="vlera" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+<div id="cmimi" class="col-md-10" style="margin-top:7px">
+    <span></span>
+</div>
+
+
+<div id="hyrje" class="col-md-10" style="margin-top:7px">
+    <button type="button" title="Dalje" class="btn btn-danger" id="Magazino" onclick="update()">Dalje</button>
+
+</div>
+
+
+<hr /><hr /><hr />
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+@*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")*@
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var output = $('#Barcode')
+        $("#Magazino").hide();
+        $('#Barcode').keydown(function (e) {
+
+            if (e.keyCode == 13) {
+                $('#spinner').show();
+                $('#spinner').html('<img src="ajax-loader.gif"> Prisni...');
+                $("#Barcode").blur();
+              
+
+                $.ajax(
+       {
+           url: '@Url.Action("getOrder", "Dalje")',
+
+          //contentType: "application/json; charset=utf-8",
+          dataType: "json",
+           type: 'POST',
+           data: {
+               bcode: $('#Barcode').val(),
+           },
+           //contentType:'text/plain', //'application/json; charset=utf-8',
+           success: function (data) {
+
+               debugger;
+               var newdata = data;
+               if (newdata.idOrder != '0') {
+                   //$('#idshoferi').text(newdata.DriverIdPickUp);
+                   $('#idshoferi').text("Shoferi : "+newdata.EmriShoferi).css("font-weight", "bold");
+                   $('#derguesi').text("Derguesi : " + newdata.EmriKlienti).css("font-weight", "bold");
+                   $('#emrimarresi').text("Marresi : " + newdata.EmriMarresi).css("font-weight", "bold");
+                   $('#adresa').text("Adresa : " + newdata.adresaMarresi).css("font-weight", "bold");
+                   $('#zona').text("Zona : " + newdata.ZonaEmertimi).css("font-weight", "bold");
+                   $('#sherbimi').text("Sherbimi : " + newdata.LlojiEmertimi).css("font-weight", "bold");
+                   $('#orapickup').text("Ora : " + ToJavaScriptDate(newdata.OraPickUp)).css("font-weight", "bold");
+                   $('#vlera').text("Vlera : " + newdata.Vlera + " LEK").css("font-weight", "bold");
+                   $('#cmimi').text("Cmimi : " + newdata.Cmimi + " LEK").css("font-weight", "bold");
+                   $("#Shoferi").val(newdata.DriverIdPickUp);
+                   $("#Vlera").val(newdata.Vlera + newdata.Cmimi);
+                   $("#Magazino").show();
+                   document.getElementById("Magazino").focus();
+                   $('#spinner').hide();
+               }
+               else
+               {
+                   $('#derguesi').text("");
+                   $('#idshoferi').text("");
+                   $('#emrimarresi').text("");
+                   $('#adresa').text("");
+                   $('#zona').text("");
+                   $('#sherbimi').text("");
+                   $('#orapickup').text("");
+                   $('#vlera').text("");
+                   $('#cmimi').text("");
+                   $("#Magazino").hide();
+                   $('#Barcode').val("");
+                   document.getElementById("Barcode").focus();
+                   $('#spinner').hide();
+               }
+           },
+
+           error: function () {
+               alert("Ndodhi nje gabim kerkim !");
+           }
+       }
+           );
+                function ToJavaScriptDate(value) {
+                    var pattern = /Date\(([^)]+)\)/;
+                    var results = pattern.exec(value);
+                    var dt = new Date(parseFloat(results[1]));
+                    return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+                }
+            }
+        })
+
+    });
+</script>
+<script>
+        function update() {
+            debugger;
+            var x = $('#idshoferi span').text();
+            $.ajax(
+      {
+          url: '@Url.Action("updateOrder", "Dalje")',
+
+          //contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          type: 'POST',
+          data: {
+              bcode: $('#Barcode').val(),
+            
+              detyrimi: $('#Vlera').val(),
+              idShoferi: $('#Shoferi').val(),
+          },
+          //contentType:'text/plain', //'application/json; charset=utf-8',
+          //success: function (data) {
+          //  //  debugger;
+
+          //   // var newdata = data;
+
+          //},
+
+          //error: function () {
+          //    alert("Ndodhi nje gabim ne kerkim !");
+          //}
+      }
+          );
+            $('#derguesi').text("");
+            $('#idshoferi').text("");
+            $('#emrimarresi').text("");
+            $('#adresa').text("");
+            $('#zona').text("");
+            $('#sherbimi').text("");
+            $('#orapickup').text("");
+            $('#vlera').text("");
+            $('#cmimi').text("");
+            $("#Magazino").hide();
+            $('#spinner').hide();
+            $('#Barcode').val("");
+            document.getElementById("Barcode").focus();
+        }
+</script>
+

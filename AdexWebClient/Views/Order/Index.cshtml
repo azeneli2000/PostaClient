@@ -1,0 +1,289 @@
+﻿@model IEnumerable<BusinessLayer.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dergesat</h2>
+
+<p>
+    @Html.ActionLink("Dergese e Re", "Create")
+</p>
+@*<script src="~/Scripts/jquery-1.12.4.js"></script>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#datepicker").datepicker({
+            monthNames: ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
+            'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nentor', 'Dhjetor'],
+            monthNamesShort: ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer',
+                    'Kor', 'Gus', 'Sht', 'Tet', 'Nen', 'Dhj'],
+            dayNames: ['Djele', 'Hene', 'Marte', 'Mekure', 'Enjte', 'Premte', 'Shtune'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['Dj', 'He', 'Ma', 'Me', 'En', 'Pr', 'Sh'],
+            weekHeader: 'Java',
+            dateFormat: 'dd.mm.yy'
+        });
+    });
+
+    $(document).ready(function () {
+        $("#datepickerM").datepicker({
+            monthNames: ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
+            'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nentor', 'Dhjetor'],
+            monthNamesShort: ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer',
+                    'Kor', 'Gus', 'Sht', 'Tet', 'Nen', 'Dhj'],
+            dayNames: ['Djele', 'Hene', 'Marte', 'Mekure', 'Enjte', 'Premte', 'Shtune'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['Dj', 'He', 'Ma', 'Me', 'En', 'Pr', 'Sh'],
+            weekHeader: 'Java',
+            dateFormat: 'dd.mm.yy'
+        });
+    });
+
+</script>
+<script>
+
+</script>*@
+<div>
+    @Html.Partial("_Data", new DatePicker())
+</div>
+ @*@using (Html.BeginForm("Index", "Order"))
+    {
+
+ <input type="text" name="datepicker" id="datepicker" readonly='readonly'> 
+ <input type="text" name="datepickerM" id="datepickerM" readonly='readonly'>
+<input  value="Kerko" class="btn btn-default btn-primary" />
+   }*@
+<br /><br />
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.idOrder)
+          
+        </th>*@
+        <th>
+Nr
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataOraOrder)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.idOrder)
+        </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.ZonaEmertimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LlojiEmertimi)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Pesha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cmimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valua)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EmriMarresi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adresaMarresi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Paguan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vlera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dorzuar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OraDorezimi)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.pickUp)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.DriverIdPickUp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OraPickUp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KthyerMag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdMagazina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverIdKthyerMag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OraKthyerMag)
+        </th>*@
+       
+        @*<th>
+            @Html.DisplayNameFor(model => model.DriverIdDorezimi)
+        </th>*@
+      
+       
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdKlienti)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdLloji)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdZona)
+        </th>*@
+       
+        <th></th>
+    </tr>
+    @{int i = 1;}
+@foreach (var item in Model) {
+   
+    <tr>
+        @*<td>
+             @Html.DisplayFor(modelItem => item.idOrder)
+        </td>*@
+        <td>@(i++)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataOraOrder)
+        </td>
+        @*<td>
+            Html.DisplayFor(modelItem => item.idOrder) *@
+            @*<img src="@item.ImageUrl" />*@
+        @*</td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ZonaEmertimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LlojiEmertimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pesha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cmimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmriMarresi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adresaMarresi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paguan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vlera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dorzuar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OraDorezimi)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.pickUp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverIdPickUp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OraPickUp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KthyerMag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdMagazina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverIdKthyerMag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OraKthyerMag)
+        </td>*@
+       
+        @*<td>
+            @Html.DisplayFor(modelItem => item.DriverIdDorezimi)
+        </td>*@
+       
+       
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdKlienti)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdLloji)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdZona)
+        </td>*@
+       
+        
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Detaje", "Detaje", new {  id=item.idOrder}) |
+            @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>
+
+@*<script>
+    debugger;
+    var f = document.getElementById("datepicker").value;
+    var m = document.getElementById("datepickerM").value;
+    
+    $('#Kerko').click(function (e) {
+        $.post('/Order/Index', { 'dataF': f, 'dataM': m });
+    });
+
+</script>*@
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js") 
+
+<script>
+    //$('checkbox').each(function ()  {
+    //    $('checkbox:checked').parent("td").parent("tr").css({ "background-color": "DarkSlateBlue", "color": "GhostWhite" });
+    //});
+
+    //$('tr .checkboxes').each(function () {
+    //    if (this.checked) {
+    //        $(this).closest('tr').css({ "background-color": "DarkSlateBlue", "color": "GhostWhite" });
+    //    }
+    //});
+    //$(document).ready(function () {
+    //    $('td').each(function () {
+    //        if ($(this).text() == '') {
+    //            $(this).css('backgroundColor', 'red');
+    //        }
+    //    });
+    //});
+
+    //var allCells = $(".row > div");
+
+    //$.each(allCells, function (index, child) {
+    //    if (child.textContent === "") {
+    //        $(child).parent().css("background-color", "red");
+    //    }
+
+    //});
+</script>

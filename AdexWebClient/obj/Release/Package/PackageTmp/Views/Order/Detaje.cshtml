@@ -1,0 +1,182 @@
+﻿@model BusinessLayer.Order
+<h4>Dergesa</h4>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */  }) |*@
+    @Html.ActionLink("Kthehu te lista", "Index")
+</p>
+<div id='DivIdToPrint'>
+ Nr: @Html.DisplayFor(model => model.idOrder)
+  
+      <hr />
+  
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.idOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idOrder)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmriMarresi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmriMarresi)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresaMarresi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresaMarresi)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+          Derguesi
+        </dt>
+        <dd>
+          @ViewBag.Derguesi
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paguan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paguan)
+        </dd>
+
+     
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cmimi)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Cmimi) @Html.DisplayFor(model => model.Valua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vlera)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Vlera) @Html.DisplayFor(model => model.Valua)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Valua)
+        </dt>*@
+
+
+        <dd>
+           
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pesha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pesha) KG
+        </dd>
+
+     
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZonaEmertimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZonaEmertimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LlojiEmertimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LlojiEmertimi)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataOraOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataOraOrder)
+           
+
+        </dd>
+
+      
+      
+
+        <dd>
+            <hr />
+            <img src="@ViewBag.Base64String" id="barImg"/>
+            <br /><br />
+         </dd>
+
+        @if (Model.Shenime != null)
+        {
+        <dt>
+            @Html.DisplayNameFor(model => model.Shenime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shenime)
+        </dd>
+        }
+    </dl>
+
+</div>
+<div>
+<button type="button" title="Llogarit Cmimin" class="btn btn-danger" id="Price" onclick="printJs()">Printo Dergesen</button>
+    </div>
+
+<script src= "https://printjs-4de6.kxcdn.com/print.min.js"></script>
+<link href= "https://printjs-4de6.kxcdn.com/print.min.css></link" rel="stylesheet" >
+
+<script>
+    function printDiv() {
+
+        var divToPrint = document.getElementById('DivIdToPrint');
+
+        var newWin = window.open('', 'Print-Window');
+
+        newWin.document.open();
+
+        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+
+        newWin.document.close();
+
+        setTimeout(function () { newWin.close(); }, 10);
+
+    }
+
+</script>
+<script>
+    function printJs()
+    {
+        window.print();
+    }
+</script>

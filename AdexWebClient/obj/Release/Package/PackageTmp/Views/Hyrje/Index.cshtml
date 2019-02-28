@@ -1,0 +1,51 @@
+﻿@model BusinessLayer.Perdoruesi
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@using (Html.BeginForm("Index", "Hyrje", FormMethod.Post))
+{
+    <br />
+    <fieldset>
+        <br />
+        <legend>Vendosni te dhenat e hyrjes</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>@Html.LabelFor(Model => Model.perdoruesi)    </td>
+                <td>@Html.TextBoxFor(Model => Model.perdoruesi)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.perdoruesi)</td>
+            </tr>
+            <tr><td></td></tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(Model => Model.password)
+                </td>
+                <td>
+                    @Html.PasswordFor(Model => Model.password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(Model => Model.password)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}

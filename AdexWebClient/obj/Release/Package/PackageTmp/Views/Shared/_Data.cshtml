@@ -1,0 +1,54 @@
+﻿@model DatePicker
+
+
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#datepicker").datepicker({
+            monthNames: ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
+            'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nentor', 'Dhjetor'],
+            monthNamesShort: ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer',
+                    'Kor', 'Gus', 'Sht', 'Tet', 'Nen', 'Dhj'],
+            dayNames: ['Djele', 'Hene', 'Marte', 'Mekure', 'Enjte', 'Premte', 'Shtune'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['Dj', 'He', 'Ma', 'Me', 'En', 'Pr', 'Sh'],
+            weekHeader: 'Java',
+            dateFormat: 'mm.dd.yy'
+        });
+    });
+
+    $(document).ready(function () {
+        $("#datepickerM").datepicker({
+            monthNames: ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
+            'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nentor', 'Dhjetor'],
+            monthNamesShort: ['Jan', 'Shk', 'Mar', 'Pri', 'Maj', 'Qer',
+                    'Kor', 'Gus', 'Sht', 'Tet', 'Nen', 'Dhj'],
+            dayNames: ['Djele', 'Hene', 'Marte', 'Mekure', 'Enjte', 'Premte', 'Shtune'],
+            dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            dayNamesMin: ['Dj', 'He', 'Ma', 'Me', 'En', 'Pr', 'Sh'],
+            weekHeader: 'Java',
+            dateFormat: 'mm.dd.yy'
+        });
+    });
+
+</script>
+<script>
+
+</script>
+
+@using (Html.BeginForm("Index", "Order"))
+{
+    @Html.DisplayNameFor(Model => Model.DataFillimi);
+    @Html.EditorFor(Model=>Model.DataFillimi , new { htmlAttributes =  new { @id = "datepicker" } })
+    @Html.ValidationMessageFor(model => model.DataFillimi, "", new { @class = "text-danger" })
+
+    @Html.DisplayNameFor(Model => Model.DataMbarimi);
+    @Html.EditorFor(Model => Model.DataMbarimi, new { htmlAttributes = new { @id = "datepickerM" },   })
+    @Html.ValidationMessageFor(model => model.DataMbarimi, "", new { @class = "text-danger" })
+    @*<input type="text" name="datepicker" id="datepicker" readonly='readonly'>
+    <input type="text" name="datepickerM" id="datepickerM" readonly='readonly'>*@
+    <input type="submit" value="Kerko" class="btn btn-default btn-primary" />
+}

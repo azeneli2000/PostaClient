@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Adex Web Client", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+           @if (Session["userID"] == null)
+           {
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Hyrje", "Index", "Hyrje")</li>
+            </ul>
+           }
+           else
+           {
+            <ul class="nav navbar-nav navbar-right">
+                @*<li>@Html.ActionLink("Perdoruesit", "Index", "Perdoruesi", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+                <li>@Html.ActionLink(Session["userID"].ToString(), "Index", "Blank")</li>
+                <li>@Html.ActionLink("Largohu", "Index", "Home")</li>
+
+            </ul>    
+                
+
+                         if (Session["agjensi"].ToString().ToLower() == "true")
+                         {
+                             <ul class="nav navbar-nav">
+                                
+                              
+                                         <li>@Html.ActionLink("Porosite", "Index", "Order")</li>
+                                         <li>@Html.ActionLink("Shoferet", "Index", "ShoferiDetyrimi")</li>
+                                         
+                                    
+                                
+                                 
+                              
+                                         <li>@Html.ActionLink("HyrjeMagazina", "Index", "HyrjeMag")</li>
+                                         <li>@Html.ActionLink("DaljeMagazina", "Index", "Dalje")</li>
+                                         
+                                    
+                                
+                             </ul>
+                         }
+                         else
+                         {
+
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Porosite", "Index", "Order")</li>
+                                }
+
+                            </ul>
+                         }
+
+           }
+
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        @*<footer>
+            <p>&copy; @DateTime.Now.Year - AdexWebClient</p>
+        </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
